@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codificador 🔒</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="container">
+        <img src="img/icognito.png" alt="icognito" srcset="">
+
+        
+        <div class="message">
+            <label for="message"><strong>Mensagem a ser Codificada/Decodificada:
+            </strong><input type="text" name="message" id="message" required>
+            </label>
+        </div>
+
+        <div class="message">
+
+            <label for="opcaoCod"><strong>Selecione o tipo de Criptografia:</strong>
+            <select name="opcaoCod" id="opcaoCod" required>
+                <option value=" ">Selecione</option>
+                <option value="cesar">Cifra de Cesar</option>
+                <option value="base64">Base64</option>
+            </select>
+            </label>
+        </div>
+        <div id="chave" class="message">
+            <Label for="chave"><strong style="color: red;">Digite N° da Chave</strong><br>
+                <input type="number" name="chave" id="chaveEsc">
+            </Label>
+        </div>
+
+        <div class="message">
+            <label for="codificar"><strong>Codificar:</strong>
+                <input type="radio" name="codedecode" id="codificar" onchange="spawnBtn()">
+            </label>
+            <label for="decodificar"><strong>Decodificar</strong>
+                <input type="radio" name="codedecode" id="decodificar" onchange="spawnBtn1()">
+            </label>
+        </div>
+
+        <div class="message">
+            <button id="btnCodificar" onclick="codificar()"><strong>Code🔐</strong></button>
+            <button id="btnDecodificar" onclick="decodificar()"><strong>Decode🔑</strong></button>
+        </div>
+        <div id="error">
+            <h3><strong id="txtError"></strong></h3>
+        </div>
+
+        <div class="message"><strong>Mensagem Codificada/Decodificada:</strong>
+            <label for="resultado">
+                <input type="text" name="resultado" id="resultado" disabled>
+            </label>
+        </div>
+
+
+
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
