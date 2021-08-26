@@ -10,7 +10,12 @@ function codificar(){
 }
 
 function decodificar(){
+    let message = document.getElementById('message').value;
+    let opcaoCod = document.getElementById('opcaoCod').value;
+    let chaveEsc = document.getElementById('chaveEsc').value;
 
+  
+    validaInput(message, opcaoCod, chaveEsc);
 }
 
 var opcaoCod = document.getElementById('opcaoCod');
