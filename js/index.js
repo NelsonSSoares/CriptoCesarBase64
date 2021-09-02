@@ -1,12 +1,47 @@
 function codificar(){
+    
+const alfabeto = ["A","B","C","D","E","F","G","H","I","j","K","L","M","N","O","P","Q","R","S","T","U","V","X","Y","Z"];
+var  message = document.getElementById('message').value.toUpperCase();
+var  opcaoCod = document.getElementById('opcaoCod').value;
+var  chaveEsc = document.getElementById('chaveEsc').value;
+var  encripMsg = []
 
-    let message = document.getElementById('message').value;
-    let opcaoCod = document.getElementById('opcaoCod').value;
-    let chaveEsc = document.getElementById('chaveEsc').value;
+    
+    
+    chaveEsc = parseInt(chaveEsc);
 
+    console.log(message);
   
     validaInput(message, opcaoCod, chaveEsc);
     
+    if(opcaoCod == 'cesar'){
+        message = message.split('');
+        console.log(message);
+        var cesar = []
+
+      for( var i = 0 ; i <= message.length ; i++){
+          
+            for(var j = 0 ; j <= alfabeto.length; j++ ){
+                if(message[i] == alfabeto[j]){
+                    if(alfabeto[j] == undefined){
+                      
+                    }
+                    encripMsg.push(alfabeto[j + chaveEsc]);
+                    console.log(encripMsg);
+                }
+            }
+
+        } 
+
+        return document.getElementById('resultado').value = encripMsg;
+         
+    }else if(opcaoCod == 'base64'){
+        var base64 = btoa(message);
+        console.log(base64);
+        return document.getElementById('resultado').value = base64;
+
+    }
+
 }
 
 function decodificar(){
@@ -16,6 +51,34 @@ function decodificar(){
 
   
     validaInput(message, opcaoCod, chaveEsc);
+
+    if(opcaoCod == 'base64'){
+
+        var base64 = atob(message);
+        
+        return document.getElementById('resultado').value = base64;
+
+    }else if(opcaoCod == 'cesar'){
+        message = message.split('');
+        console.log(message);
+        var cesar = []
+
+        for (var i = 0; i <= message.length; i++) {
+
+            for (var j = 0; j <= alfabeto.length; j++) {
+                if (message[i] == alfabeto[j]) {
+                    if (alfabeto[j] == undefined) {
+
+                    }
+                    encripMsg.push(alfabeto[j - chaveEsc]);
+                    console.log(encripMsg);
+                }
+            }
+
+        }
+
+        return document.getElementById('resultado').value = encripMsg;
+    }
 }
 
 var opcaoCod = document.getElementById('opcaoCod');
@@ -72,92 +135,5 @@ function validaInput(inp1, inp2, inp3){
 }
 
 
-document.getElementById('resultado').value = "teste"
-
-/*
-// var chave = document.getElementById("key")
-// document.getElementById("key").defaultValue = 0;
-function changeCipher(){
-    if(document.getElementById("selectCipher").value == "caesar"){
-        document.getElementById("caesar").style.display = "flex";
-        document.getElementById("base64").style.display = "none";
-        
-    }
-    else if(document.getElementById("selectCipher").value == "base64"){
-        
-        document.getElementById("base64").style.display = "flex";
-        document.getElementById("caesar").style.display = "none";
-
-    }else{
-
-        document.getElementById("caesar").style.display = "none";
-        document.getElementById("base64").style.display = "none";
-    }
 
 
-}
-
-function codeOrDecode(){
-    var radioSel = document.getElementById("radioCod");
-    var chave = document.getElementById("key");
-    var key = parseInt(chave.value);
-    key = key%26;
-    console.log(radioSel.value );
-    if (document.getElementById('decod').checked){
-        key = (-1)*key
-    }
-    codeCaesar(key);
-}
-
-function codeCaesar(key){
-    var entrada = document.getElementById("inputCaesar").value;
-    var saida = document.getElementById("CaesarResult"); 
-    var decod = "";
-    saida.innerHTML = "";
-
-    for (var i = 0; i < entrada.length; i++ ){
-        decod = entrada.charCodeAt(i);
-        
-        //letra é minustula
-        if (decod>=97 && decod<= 122){
-            decod = decod + key;
-            if (decod> 122){
-                decod = decod - 26;
-            }else if(decod< 97){
-                decod = decod + 26;
-            }
-        }
-        //letra é maiucula
-        if (decod>=65 && decod<= 90){
-            decod = decod + key;
-            if (decod> 90){
-                decod = decod - 26;
-            }else if(decod<65){
-                decod = decod + 26;
-            }
-        }
-        saida.innerHTML += String.fromCharCode(decod);
-    }
-    
-}
-
-function base64CodeNDecode(){
-
-    var entrada = document.getElementById("inputBase64").value;
-    var saida = document.getElementById("base64Result"); 
-    
-    var radioSel = document.getElementById("radioCod");
-   
-    console.log(radioSel.value );
-    if (document.getElementById('decod').checked){
-        saida.innerHTML = atob(entrada);
-    }
-    else{
-        console.log(btoa(entrada))
-        
-        saida.innerHTML = btoa(entrada);
-
-    }
-    
-}
-*/
